@@ -23,19 +23,21 @@ const displayPhones = phones => {
     const phonesContainer = document.getElementById('phones-container');
     // use forEach for getting single phone
     newPhones.forEach( phone => {
-        console.log(phone);
+        // console.log(phone);
         // create div
         const div = document.createElement('div');
         // create class
         div.classList.add('phones-container')
         // add phone image , name & brand
         div.innerHTML = `
-        <div class="card">
-            <img src="${phone.image}" alt="">
-            <div class="card-body">
-                <p>Phone Name : ${phone.phone_name}</p>
-                <p>Brand : ${phone.brand}</p>
-                <button onclick="loadPhoneDetails('${phone.slug}')" class ="btn btn-primary" >More Info</button>
+        <div class="col-12 col-lg-4">
+            <div class="card">
+                <img src="${phone.image}" alt="">
+                <div class="card-body">
+                    <p>Phone Name : ${phone.phone_name}</p>
+                    <p>Brand : ${phone.brand}</p>
+                    <button onclick="loadPhoneDetails('${phone.slug}')" class ="btn btn-primary" >More Info</button>
+                </div>
             </div>
         </div>
         `;
@@ -45,6 +47,47 @@ const displayPhones = phones => {
 }
 // Load Phone Details
 const loadPhoneDetails = id => {
-    console.log(id);
+    const url = `https://openapi.programming-hero.com/api/phone/${id}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayPhoneDetails(data.data))
+}
+// display full specification of a phone
+const displayPhoneDetails = phone => {
+    console.log(phone);
+    const phoneContainer = document.getElementById('phone-container');
+    // create div 
+    const div = document.createElement('div');
+    // add class
+    div.classList.add('phones-container')
+    div.innerHTML = `
+        <div class="card">
+        <img src="${phone.image}" alt="">
+            <div class="card-body">
+                <h4>Phone details :</h4>
+                <p>Phone Name : ${phone.name}</p>
+                <p>Brand : ${phone.brand}</p>
+                <p>Release date : ${phone.releaseDate}</p>
+            </div>
+            <div class="card-body">
+                <h4>Main Features :</h4>
+                <p>Storage : ${phone.mainFeatures.storage}</p>
+                <p>Display Size : ${phone.mainFeatures.displaySize}</p>
+                <p>Chip Set : ${phone.mainFeatures.chipSet}</p>
+                <p>Memory : ${phone.mainFeatures.memory}</p>
+                <p>Sensonrs : ${phone.mainFeatures.sensors}</p>
+            </div>
+            <div class="card-body">
+                <h4>Others Features :</h4>
+                <p>WLAN : ${phone.others.WLAN}</p>
+                <p>Bluetooth : ${phone.others.Bluetooth}</p>
+                <p>GPS : ${phone.others.GPS}</p>
+                <p>NFC : ${phone.others.NFC}</p>
+                <p>Radio : ${phone.others.Radio}</p>
+                <p>USB : ${phone.others.USB}</p>
+            </div>
+        </div>
+    `;
+    phoneContainer.appendChild(div);
 }
 
