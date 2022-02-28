@@ -1,0 +1,8 @@
+/* -------------------------google font ------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* --------------------------Common Utilities ---------------------------*/
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFADF0;
+}
