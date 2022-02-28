@@ -4,5 +4,18 @@
 /* --------------------------Common Utilities ---------------------------*/
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #FFADF0;
+    background-color: #ffe9fbc9;
 }
+/* ---------------------Customization section -------------------------- */
+.phones-container{
+    border : 0.1px solid #7A0BC0;
+    /* padding: 5px; */
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 1px rgba(1, 13, 184, 0.795);
+}
+#phones-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+/* ---------------------End -------------------------- */

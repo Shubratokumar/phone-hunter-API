@@ -12,10 +12,33 @@
 </head>
 <body>
     <main>
+        <!-- Heading starts here -->
         <h2 class="text-center my-4">Search your favorite Smartphone here.</h2>
-        <div id="phone-container" class="container">
-
+        <!-- search field starts here -->
+        <div class="input-group mb-3 w-75 mx-auto">
+            <input id="input-field" type="text" class="form-control" placeholder="Search Smartphone here" aria-label="Recipient's username" aria-describedby="button">
+            <button onclick="searchText()" class="btn btn-outline-info" type="button" id="button">Search</button>
         </div>
+        <!-- specific phones details container -->
+        <div id="phones-container" class="container">
+            <!-- <div class="card">
+                <img src="${phone.image}" alt="">
+                <div class="card-body">
+                    <p>Phone Name : ${phone.phone_name}</p>
+                    <p>Brand : ${phone.brand}</p>
+                    <button onclick="">More Info</button>
+                </div>
+            </div> -->
+        </div>
+        <!-- <div class="card-group">
+  <div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div> -->
     </main>
     
     <!-- vanilla javascript -->
