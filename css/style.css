@@ -14,8 +14,15 @@ body {
     border-radius: 15px;
     box-shadow: 4px 4px 1px rgba(1, 13, 184, 0.795);
 }
-/* #phones-container{
+#phones-container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-} */
+}
+
+/* -------------------- Mobile responsive------------------- */
+@media only screen and (max-width: 600px) {
+    #phones-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
 /* ---------------------End -------------------------- */

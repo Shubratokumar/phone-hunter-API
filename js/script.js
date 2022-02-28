@@ -30,14 +30,12 @@ const displayPhones = phones => {
         div.classList.add('phones-container')
         // add phone image , name & brand
         div.innerHTML = `
-        <div class="col-12 col-lg-4">
-            <div class="card">
-                <img src="${phone.image}" alt="">
-                <div class="card-body">
-                    <p>Phone Name : ${phone.phone_name}</p>
-                    <p>Brand : ${phone.brand}</p>
-                    <button onclick="loadPhoneDetails('${phone.slug}')" class ="btn btn-primary" >More Info</button>
-                </div>
+        <div class="card">
+            <img src="${phone.image}" alt="">
+            <div class="card-body">
+                <p>Phone Name : ${phone.phone_name}</p>
+                <p>Brand : ${phone.brand}</p>
+                <button onclick="loadPhoneDetails('${phone.slug}')" class ="btn btn-primary" >More Info</button>
             </div>
         </div>
         `;
