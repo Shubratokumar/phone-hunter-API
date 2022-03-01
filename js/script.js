@@ -1,6 +1,7 @@
-// accessing element by Id
+// accessing element by their Id
 const phonesContainer = document.getElementById('phones-container');
-const error = document.getElementById('error')
+const error = document.getElementById('error');
+const phoneContainer = document.getElementById('phone-container');
 
 // get input value and search result
 const searchText = () => {
@@ -14,19 +15,22 @@ const searchText = () => {
         
     }
     // error handle : when search with uppercase phone name
-    else if( searchValue.toLowerCase() === "iphone" || searchValue.toLowerCase() === "oppo" || searchValue.toLowerCase() === "huawei" || searchValue.toLowerCase() === "samsung") {
+    /* else if( searchValue.toLowerCase() === "iphone" || searchValue.toLowerCase() === "oppo" || searchValue.toLowerCase() === "huawei" || searchValue.toLowerCase() === "samsung") {
         // call function
         loadPhones(searchValue);
+        error.innerText = " ";
     }
+    // error handle : when input doesn't match with the API. Then give an error message
     else{
-        
-        error.innerText = "Sorry !!! We sell only Iphone, Oppo, Huawei & Samsung Phones and Gadagets."
-        
-    }
+        error.innerText = "Oops! No phone found. We sells only Iphone, Oppo, Huawei & Samsung Phones and Gadagets."
+    } */
+
+    // call function
+    loadPhones(searchValue);
     // clean input field
     input.value = " ";
-    // clean Phones container
-        phonesContainer.innerHTML = " ";
+    /* // clean Phones container
+    phonesContainer.innerHTML = " "; */
     
 }
 // load Phones
@@ -38,13 +42,14 @@ const loadPhones = searchValue =>{
 }
 // display phones by search results
 const displayPhones = phones => {
-    // console.log(phones);
+    // use slice method for showing only first 20 phones
     const newPhones = phones.slice(0, 20)
     // console.log(newPhones)
     const phonesContainer = document.getElementById('phones-container');
+    // clean previous result
+    phonesContainer.innerHTML = " ";
     // use forEach for getting single phone
     newPhones.forEach( phone => {
-        // console.log(phone);
         // create div
         const div = document.createElement('div');
         // create class
@@ -56,13 +61,13 @@ const displayPhones = phones => {
             <div class="card-body">
                 <p>Phone Name : ${phone.phone_name}</p>
                 <p>Brand : ${phone.brand}</p>
-                <button onclick="loadPhoneDetails('${phone.slug}')" class ="btn btn-primary" >More Info</button>
+                <button onclick="loadPhoneDetails('${phone.slug}')" class ="btn btn-primary">More Info</button>
             </div>
         </div>
         `;
         phonesContainer.appendChild(div)
-    })
-    // phonesContainer.innerHTML = "";
+    });
+    
 }
 // Load Phone Details
 const loadPhoneDetails = id => {
@@ -73,8 +78,9 @@ const loadPhoneDetails = id => {
 }
 // display full specification of a phone
 const displayPhoneDetails = phone => {
-    console.log(phone);
     const phoneContainer = document.getElementById('phone-container');
+    // clean previous result
+    phoneContainer.textContent = " ";
     // create div 
     const div = document.createElement('div');
     // add class
@@ -86,7 +92,7 @@ const displayPhoneDetails = phone => {
                 <h4>Phone details :</h4>
                 <p>Phone Name : ${phone.name}</p>
                 <p>Brand : ${phone.brand}</p>
-                <p>Release date : ${phone.releaseDate}</p>
+                <p>Release date : ${phone.releaseDate ? phone.releaseDate : "No release date found."}</p>
             </div>
             <div class="card-body">
                 <h4>Main Features :</h4>
@@ -98,12 +104,12 @@ const displayPhoneDetails = phone => {
             </div>
             <div class="card-body">
                 <h4>Others Features :</h4>
-                <p>WLAN : ${phone.others.WLAN}</p>
-                <p>Bluetooth : ${phone.others.Bluetooth}</p>
-                <p>GPS : ${phone.others.GPS}</p>
-                <p>NFC : ${phone.others.NFC}</p>
-                <p>Radio : ${phone.others.Radio}</p>
-                <p>USB : ${phone.others.USB}</p>
+                <p>WLAN : ${phone.others?.WLAN ? phone.others?.WLAN : "No WLAN." }</p>
+                <p>Bluetooth : ${phone.others?.Bluetooth ? phone.others?.Bluetooth : "No Bluetooth."}</p>
+                <p>GPS : ${phone.others?.GPS ? phone.others?.GPS : "No GPS."}</p>
+                <p>NFC : ${phone.others?.NFC ? phone.others?.NFC : "No NFC."}</p>
+                <p>Radio : ${phone.others?.Radio ? phone.others?.Radio : "No Radio."}</p>
+                <p>USB : ${phone.others?.USB ? phone.others?.USB : "No USB."}</p>
             </div>
         </div>
     `;
