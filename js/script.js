@@ -7,30 +7,10 @@ const phoneContainer = document.getElementById('phone-container');
 const searchText = () => {
     const input = document.getElementById('input-field');
     const searchValue = input.value;
-    // console.log(searchValue);
-    
-    // error handle : when input is an empty string
-    if(searchValue === ""){
-        error.innerText = "Please enter a phone name!!!";
-        
-    }
-    // error handle : when search with uppercase phone name
-    /* else if( searchValue.toLowerCase() === "iphone" || searchValue.toLowerCase() === "oppo" || searchValue.toLowerCase() === "huawei" || searchValue.toLowerCase() === "samsung") {
-        // call function
-        loadPhones(searchValue);
-        error.innerText = " ";
-    }
-    // error handle : when input doesn't match with the API. Then give an error message
-    else{
-        error.innerText = "Oops! No phone found. We sells only Iphone, Oppo, Huawei & Samsung Phones and Gadagets."
-    } */
-
     // call function
     loadPhones(searchValue);
     // clean input field
-    input.value = " ";
-    /* // clean Phones container
-    phonesContainer.innerHTML = " "; */
+    input.value = "";
     
 }
 // load Phones
@@ -46,28 +26,38 @@ const displayPhones = phones => {
     const newPhones = phones.slice(0, 20)
     // console.log(newPhones)
     const phonesContainer = document.getElementById('phones-container');
-    // clean previous result
+    // clean phones details
     phonesContainer.innerHTML = " ";
-    // use forEach for getting single phone
-    newPhones.forEach( phone => {
+    if(newPhones.length == 0){
+        error.innerText = "Oops! No phone found. We sells only Iphone, Oppo, Huawei & Samsung Phones and Gadagets.";
+        // clean specific phone details 
+        phoneContainer.innerHTML = " ";
+    }
+    else{
+        // use forEach for getting single phone
+        newPhones?.forEach( phone => {
         // create div
         const div = document.createElement('div');
         // create class
         div.classList.add('phones-container')
         // add phone image , name & brand
         div.innerHTML = `
-        <div class="card">
-            <img src="${phone.image}" alt="">
-            <div class="card-body">
-                <p>Phone Name : ${phone.phone_name}</p>
-                <p>Brand : ${phone.brand}</p>
-                <button onclick="loadPhoneDetails('${phone.slug}')" class ="btn btn-primary">More Info</button>
+            <div class="card">
+                <img src="${phone.image}" alt="">
+                <div class="card-body">
+                    <p>Phone Name : ${phone.phone_name}</p>
+                    <p>Brand : ${phone.brand}</p>
+                    <button onclick="loadPhoneDetails('${phone.slug}')" class ="btn btn-primary">More Info</button>
+                </div>
             </div>
-        </div>
-        `;
-        phonesContainer.appendChild(div)
-    });
-    
+            `;
+            phonesContainer.appendChild(div)
+        });
+        // clean error message
+        error.innerText = "";
+        // clean specific phone details 
+        phoneContainer.innerHTML = " ";
+    }
 }
 // Load Phone Details
 const loadPhoneDetails = id => {
@@ -76,11 +66,11 @@ const loadPhoneDetails = id => {
     .then(res => res.json())
     .then(data => displayPhoneDetails(data.data))
 }
-// display full specification of a phone
+// display full specification of a phone 
 const displayPhoneDetails = phone => {
     const phoneContainer = document.getElementById('phone-container');
-    // clean previous result
-    phoneContainer.textContent = " ";
+    // clean specific phone details
+    phoneContainer.innerHTML = " ";
     // create div 
     const div = document.createElement('div');
     // add class
@@ -116,3 +106,4 @@ const displayPhoneDetails = phone => {
     phoneContainer.appendChild(div);
 }
 
+/* ----------------------------- End ---------------------------------- */

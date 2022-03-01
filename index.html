@@ -11,27 +11,33 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- main container starts here -->
     <main class="container">
         <!-- Heading starts here -->
-        <h1 class="text-center my-4">Search your favorite Smartphone here.</h1>
+        <h1 class="text-center my-4">Smartphones World</h1>
         <!-- search field starts here -->
         <div class="input-group mb-3 w-75 mx-auto">
-            <input id="input-field" type="text" class="form-control" placeholder="Search Smartphone here" aria-label="Recipient's username" aria-describedby="button">
+            <input id="input-field" type="text" class="form-control" placeholder="Search Smartphones and Gadagets." aria-label="Recipient's username" aria-describedby="button">
             <button onclick="searchText()" class="btn btn-outline-info" type="button" id="button">Search</button>
         </div>
+        <!-- search field ends here -->
         <!-- error messagees starts here -->
-        <p id="error" class="text-danger text-center"></p>
-        <!-- specific phones details container -->
-        <div class="row">
-            <div id="phone-container" class="phone-container mx-auto">
+        <p id="error" class="text-danger text-center">
 
-            </div>
+        </p>
+        <!-- error messagees ends here -->
+        <!-- specific phones details container starts here -->
+        <div id="phone-container" class="phone-container mx-auto">
+
         </div>
-        <!-- searching phones container -->
+        <!-- specific phones details container ends here -->
+        <!-- phones container starts here-->
         <div id="phones-container" class="">
             
         </div>    
+        <!-- phones container ends here-->
     </main>
+    <!-- main container ends here -->
     
     <!-- vanilla javascript -->
     <script src="js/script.js"></script>
