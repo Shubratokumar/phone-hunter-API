@@ -1,17 +1,17 @@
-/* -------------------------google font ------------------------- */
+/* ----------------------------- google font -------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-/* --------------------------Common Utilities ---------------------------*/
+/* -------------------------- Common Utilities -------------------------------*/
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #ffe9fbc9;
 }
-/* ---------------------Customization section -------------------------- */
+/* -------------------------- Customization section -------------------------- */
 .phones-container{
     border : 1px solid #0270ff;
     margin: 10px;
     border-radius: 5px;
-    box-shadow: 4px 4px 1px #85F4FF;
+    box-shadow: 6px 6px 3px #85F4FF;
 }
 #phones-container{
     display: grid;
@@ -20,8 +20,33 @@ body {
 #phone-container{
     width : 75%;    
 }
+/*--------------------------- Spinner Utilities ---------------------- */
 
-/* -------------------- Mobile responsive------------------- */
+#loader {
+    border: 12px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 12px solid #100385;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* --------------------------- Mobile responsive------------------------------ */
 @media only screen and (max-width: 600px) {
     #phones-container{
         grid-template-columns: repeat(1, 1fr);
@@ -30,4 +55,4 @@ body {
         width: 100%;
     }
 }
-/* ---------------------End -------------------------- */
+/* -------------------------------- End -------------------------------------- */

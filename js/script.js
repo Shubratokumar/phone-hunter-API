@@ -1,17 +1,16 @@
 // accessing element by their Id
 const phonesContainer = document.getElementById('phones-container');
-const error = document.getElementById('error');
 const phoneContainer = document.getElementById('phone-container');
+const error = document.getElementById('error');
 
 // get input value and search result
 const searchText = () => {
     const input = document.getElementById('input-field');
     const searchValue = input.value;
     // call function
-    loadPhones(searchValue);
+    loadPhones(searchValue.toLowerCase());
     // clean input field
     input.value = "";
-    
 }
 // load Phones
 const loadPhones = searchValue =>{
@@ -24,12 +23,12 @@ const loadPhones = searchValue =>{
 const displayPhones = phones => {
     // use slice method for showing only first 20 phones
     const newPhones = phones.slice(0, 20)
-    // console.log(newPhones)
     const phonesContainer = document.getElementById('phones-container');
     // clean phones details
     phonesContainer.innerHTML = " ";
+    // error handle : when searching input does't match
     if(newPhones.length == 0){
-        error.innerText = "Oops! No phone found. We sells only Iphone, Oppo, Huawei & Samsung Phones and Gadagets.";
+        error.innerText = "Oops! No phone found. Search only Iphone, Oppo, Huawei & Samsung Phones and Gadagets.";
         // clean specific phone details 
         phoneContainer.innerHTML = " ";
     }
@@ -40,7 +39,7 @@ const displayPhones = phones => {
         const div = document.createElement('div');
         // create class
         div.classList.add('phones-container')
-        // add phone image , name & brand
+        // add phones image , name & brand
         div.innerHTML = `
             <div class="card">
                 <img src="${phone.image}" alt="">
@@ -75,6 +74,7 @@ const displayPhoneDetails = phone => {
     const div = document.createElement('div');
     // add class
     div.classList.add('phones-container')
+    // add specific phone details
     div.innerHTML = `
         <div class="card">
         <img src="${phone.image}" alt="">
@@ -105,5 +105,20 @@ const displayPhoneDetails = phone => {
     `;
     phoneContainer.appendChild(div);
 }
+/* ------------------------------------ Spinner script starts here ------------------------------ */
+document.onreadystatechange = function() {
+    if (document.readyState !== "complete") {
+        document.querySelector(
+        "#phones-container").style.visibility = "hidden";
+        document.querySelector(
+        "#loader").style.visibility = "visible";
+    } else {
+        document.querySelector(
+        "#loader").style.display = "none";
+        document.querySelector(
+        "#phones-container").style.visibility = "visible";
+    }
+};
+/* ------------------------------------ Spinner script ends here -------------------------------- */
 
-/* ----------------------------- End ---------------------------------- */
+/* ----------------------------------------------- End ------------------------------------------ */
