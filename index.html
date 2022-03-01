@@ -13,15 +13,17 @@
 <body>
     <main class="container">
         <!-- Heading starts here -->
-        <h2 class="text-center my-4">Search your favorite Smartphone here.</h2>
+        <h1 class="text-center my-4">Search your favorite Smartphone here.</h1>
         <!-- search field starts here -->
         <div class="input-group mb-3 w-75 mx-auto">
             <input id="input-field" type="text" class="form-control" placeholder="Search Smartphone here" aria-label="Recipient's username" aria-describedby="button">
             <button onclick="searchText()" class="btn btn-outline-info" type="button" id="button">Search</button>
         </div>
+        <!-- error messagees starts here -->
+        <p id="error" class="text-danger text-center"></p>
         <!-- specific phones details container -->
         <div class="row">
-            <div id="phone-container" class="w-75 mx-auto">
+            <div id="phone-container" class="phone-container w-75 mx-auto">
 
             </div>
         </div>

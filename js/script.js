@@ -1,12 +1,33 @@
+// accessing element by Id
+const phonesContainer = document.getElementById('phones-container');
+const error = document.getElementById('error')
+
 // get input value and search result
 const searchText = () => {
     const input = document.getElementById('input-field');
     const searchValue = input.value;
     // console.log(searchValue);
+    
+    // error handle : when input is an empty string
+    if(searchValue === ""){
+        error.innerText = "Please enter a phone name!!!";
+        
+    }
+    // error handle : when search with uppercase phone name
+    else if( searchValue.toLowerCase() === "iphone" || searchValue.toLowerCase() === "oppo" || searchValue.toLowerCase() === "huawei" || searchValue.toLowerCase() === "samsung") {
+        // call function
+        loadPhones(searchValue);
+    }
+    else{
+        
+        error.innerText = "Sorry !!! We sell only Iphone, Oppo, Huawei & Samsung Phones and Gadagets."
+        
+    }
     // clean input field
     input.value = " ";
-    // call function
-    loadPhones(searchValue);
+    // clean Phones container
+        phonesContainer.innerHTML = " ";
+    
 }
 // load Phones
 const loadPhones = searchValue =>{
